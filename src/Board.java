@@ -26,13 +26,13 @@ public class Board extends Application {
 		
 		//Create grid of circles
 		for (int i = 0; i < 6; i++) {
-     for (int j = 0; j < 7; j++) {
-       Circle circle = new Circle();
-       circle.setRadius(50);
-       circle.setFill(Color.rgb(34, 103, 207));
-       circle.setStroke(Color.rgb(23, 73, 146));
-       grid.add(circle, j, i);
-     }
+			for (int j = 0; j < 7; j++) {
+				Circle circle = new Circle();
+				circle.setRadius(50);
+				circle.setFill(Color.rgb(34, 103, 207));
+				circle.setStroke(Color.rgb(23, 73, 146));
+				grid.add(circle, j, i);
+			}
 		}
 		
 		//Create the Pane
