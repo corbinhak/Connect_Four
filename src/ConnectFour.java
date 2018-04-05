@@ -16,7 +16,7 @@ public class ConnectFour extends Board{
         input.close();
 
 	    //Launches and displays the board
-	    launchApp(args);
+	    launch(args);
 		while(true) {//Main game loop
 			//Player One takes their turn
 			//Checks if they won
