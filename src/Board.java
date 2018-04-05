@@ -10,7 +10,7 @@ import javafx.geometry.*;
 
 public class Board extends Application {
 	
-	public static void main(String[] args) {
+	public static void launchApp(String[] args) {
 		
 		launch(args);
 		
