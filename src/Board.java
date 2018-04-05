@@ -1,7 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
@@ -17,6 +16,7 @@ public class Board extends Application {
 		
 	}
 	
+	//Primary Stage
 	public void start(Stage primaryStage) {
 		//Create Grid
 		GridPane grid = new GridPane();
@@ -24,6 +24,7 @@ public class Board extends Application {
 		grid.setHgap(15);
 		grid.setVgap(15);
 		
+		//Create grid of circles
 		for (int i = 0; i < 6; i++) {
      for (int j = 0; j < 7; j++) {
        Circle circle = new Circle();
