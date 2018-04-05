@@ -12,7 +12,7 @@ import javafx.geometry.*;
 public class Board extends Application {
 	
 	public static void main(String[] args) {
-		
+		//Comment to test Git
 		launch(args);
 		
 	}
