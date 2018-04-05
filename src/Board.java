@@ -12,7 +12,7 @@ import javafx.geometry.*;
 public class Board extends Application {
 	
 	public static void main(String[] args) {
-		//Comment to test Git
+		
 		launch(args);
 		
 	}
@@ -28,7 +28,8 @@ public class Board extends Application {
      for (int j = 0; j < 7; j++) {
        Circle circle = new Circle();
        circle.setRadius(50);
-       circle.setFill(Color.WHITE);
+       circle.setFill(Color.rgb(34, 103, 207));
+       circle.setStroke(Color.rgb(23, 73, 146));
        grid.add(circle, j, i);
      }
 		}
@@ -37,7 +38,7 @@ public class Board extends Application {
 		Pane pane = new Pane(grid);	
 			
 		//Create Scene, Set title, Add scene, do not allow resizing, Make scene visible
-		Scene scene = new Scene(pane, 781, 667, Color.BLUE);
+		Scene scene = new Scene(pane, 781, 667, Color.rgb(40, 117, 223));
 		primaryStage.setTitle("Connect Four");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
