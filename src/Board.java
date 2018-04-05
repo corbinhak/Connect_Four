@@ -38,7 +38,7 @@ public class Board extends Application {
 		Pane pane = new Pane(grid);	
 			
 		//Create Scene, Set title, Add scene, do not allow resizing, Make scene visible
-		Scene scene = new Scene(pane, 781, 667, Color.rgb(40, 117, 223));
+		Scene scene = new Scene(pane, 788, 672, Color.rgb(40, 117, 223));
 		primaryStage.setTitle("Connect Four");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
