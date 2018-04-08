@@ -1,7 +1,7 @@
 import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
 
-public class Piece {
+public class Piece  {
     //Variables
     String playerid;
     int row;
@@ -11,14 +11,14 @@ public class Piece {
     Circle c;
 
     //Creates the piece
-    public Piece(int row, int col, String playerid) {
+    public Piece(int row,String playerid) {
         //Create generic circle
         c = new Circle();
         c.setRadius(50);
 
         //Set the fill of the circle
         if (playerid.equals("1")) {
-            c.setFill(Color.BLACK);
+            c.setFill(Color.YELLOW);
         }
         else if (playerid.equals("2")) {
             c.setFill(Color.RED);
