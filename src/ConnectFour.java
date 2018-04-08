@@ -8,15 +8,15 @@ public class ConnectFour extends Board{
 
 	    //Gets and stores player names
 	    System.out.printf("Enter Player One's Name:");
-	    Player p1 = new Player(input.next(),1);
+	    Player p1 = new Player(input.next(), 1);
 	    System.out.printf("Enter Player Two's Name:");
-	    Player p2 = new Player(input.next(),2);
+	    Player p2 = new Player(input.next(), 2);
 
 	    //Close scanner
         input.close();
 
 	    //Launches and displays the board
-	    launch(args);
+	    launchApp(args);
 		while(true) {//Main game loop
 			//Player One takes their turn
 			//Checks if they won

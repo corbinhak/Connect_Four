@@ -9,16 +9,18 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.*;
 import javafx.scene.text.*;
 import javafx.scene.input.MouseEvent;
-//AHHHHHHHH
+
 public class Board extends Application {
 	//Integer arrays for referencing columns (1-7)
-	private int[] cOne = new int[6];
-	private int[] cTwo = new int[6];
-	private int[] cThree = new int[6];
-	private int[] cFour = new int[6];
-	private int[] cFive = new int[6];
-	private int[] cSix = new int[6];
-	private int[] cSeven = new int[6];
+	protected int[] cOne = new int[6];
+	protected int[] cTwo = new int[6];
+	protected int[] cThree = new int[6];
+	protected int[] cFour = new int[6];
+	protected int[] cFive = new int[6];
+	protected int[] cSix = new int[6];
+	protected int[] cSeven = new int[6];
+	
+	p1.getName;
 
 	//Getter methods for each column array
 	public int[] getCOne() {
@@ -42,7 +44,8 @@ public class Board extends Application {
 	public int[] getCSeven() {
 		return cSeven;//Column Seven
 	}
-	public static void main(String[] args) {
+	
+	public static void launchApp(String[] args) {
 
 		launch(args);
 
