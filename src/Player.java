@@ -31,11 +31,12 @@ public class Player extends Board{
 		
 	}
 	
-	/////////////////////////////////////////
+	///////////////////////////////////////////
 	//Method to determine if a player has won//
-	/////////////////////////////////////////
+	///////////////////////////////////////////
 	public boolean hasWon(Player p) {
 		boolean truth = false;
+		
 		//Checks vertical
 		if(checkVert(cOne) == true) {
 			truth = true;
@@ -65,6 +66,7 @@ public class Player extends Board{
 			truth = true;
 			return truth;
 		}
+		
 		//Checks horizontal
 		if(checkHori(0) == true) {
 			truth = true;
