@@ -1,4 +1,3 @@
-import java.util.Scanner;
 public class Player extends Board{
 	
 	private String name;

@@ -19,6 +19,8 @@ public class Board extends Application {
 	protected int[] cFive = new int[6];
 	protected int[] cSix = new int[6];
 	protected int[] cSeven = new int[6];
+	
+	protected int pTurn = 1;
 
 	// Getter methods for each column array
 	public int[] getCOne() {
@@ -74,6 +76,15 @@ public class Board extends Application {
 				grid.add(circle, j, i + 1);
 			}
 		}
+		
+		// Get information for turn text
+		String name1 = ConnectFour.getName1();
+		String name2 = ConnectFour.getName2();
+
+		// Create Text
+		Text turn = new Text(5, 864, name1 + "'s Turn");
+		turn.setFill(Color.rgb(0, 0, 50));
+		turn.setFont(new Font(50));
 
 		// Create Circles for dropping
 		Circle c1 = new Circle(0, 0, 50);
@@ -114,44 +125,86 @@ public class Board extends Application {
 		// On hover event
 		c1.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c1.setFill(Color.YELLOW);
-					c1.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c1.setFill(Color.RED);
+						c1.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c1.setFill(Color.BLACK);
+						c1.setStroke(Color.BLACK);
+					}
 				});
 
 		c2.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c2.setFill(Color.YELLOW);
-					c2.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c2.setFill(Color.RED);
+						c2.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c2.setFill(Color.BLACK);
+						c2.setStroke(Color.BLACK);
+					}
 				});
 
 		c3.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c3.setFill(Color.YELLOW);
-					c3.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c3.setFill(Color.RED);
+						c3.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c3.setFill(Color.BLACK);
+						c3.setStroke(Color.BLACK);
+					}
 				});
 
 		c4.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c4.setFill(Color.YELLOW);
-					c4.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c4.setFill(Color.RED);
+						c4.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c4.setFill(Color.BLACK);
+						c4.setStroke(Color.BLACK);
+					}
 				});
 
 		c5.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c5.setFill(Color.YELLOW);
-					c5.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c5.setFill(Color.RED);
+						c5.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c5.setFill(Color.BLACK);
+						c5.setStroke(Color.BLACK);
+					}
 				});
 
 		c6.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c6.setFill(Color.YELLOW);
-					c6.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c6.setFill(Color.RED);
+						c6.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c6.setFill(Color.BLACK);
+						c6.setStroke(Color.BLACK);
+					}
 				});
 
 		c7.addEventHandler(MouseEvent.MOUSE_ENTERED, 
 				e -> { 
-					c7.setFill(Color.YELLOW);
-					c7.setStroke(Color.YELLOW);
+					if (pTurn == 1) {
+						c7.setFill(Color.RED);
+						c7.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c7.setFill(Color.BLACK);
+						c7.setStroke(Color.BLACK);
+					}
 				});
 
 		// When no longer hovering
@@ -206,11 +259,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cOne[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 0, i + 1);
-						cOne[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cOne[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cOne[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -225,11 +289,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cTwo[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 1, i + 1);
-						cTwo[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cTwo[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cTwo[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -244,11 +319,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cThree[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 2, i + 1);
-						cThree[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cThree[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cThree[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -263,11 +349,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cFour[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 3, i + 1);
-						cFour[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cFour[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cFour[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -282,11 +379,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cFive[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 4, i + 1);
-						cFive[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cFive[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cFive[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -301,11 +409,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cSix[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 5, i + 1);
-						cSix[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cSix[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cSix[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -320,11 +439,22 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cSeven[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setFill(Color.RED);
-						cir.setStroke(Color.RED);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 6, i + 1);
-						cSeven[i] = 1;
+						if (pTurn == 1) {
+							cir.setFill(Color.RED);
+							cir.setStroke(Color.RED);
+							pTurn = 2;
+							cSeven[i] = 1;
+							turn.setText(name2 + "'s Turn");
+						}
+						else if (pTurn == 2) {
+							cir.setFill(Color.BLACK);
+							cir.setStroke(Color.BLACK);
+							pTurn = 1;
+							cSeven[i] = 2;
+							turn.setText(name1 + "'s Turn");
+						}
 						i = -1;
 					}
 				}
@@ -332,15 +462,6 @@ public class Board extends Application {
 		};
 
 		c7.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick7);
-
-		// Get information for turn text
-		String name1 = ConnectFour.getName1();
-		String name2 = ConnectFour.getName2();
-
-		// Create Text
-		Text turn = new Text(5, 864, name1 + "'s Turn");
-		turn.setFill(Color.rgb(0, 0, 50));
-		turn.setFont(new Font(50));
 
 		// Create the Pane
 		Pane pane = new Pane(grid);
