@@ -17,8 +17,6 @@ public class ConnectFour extends Board{
 	 player2 = input.next();
 	 Player p2 = new Player(player2,2);
 	 
-	 
-	 
 	 //Close scanner
    input.close();
    
