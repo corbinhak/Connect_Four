@@ -123,89 +123,19 @@ public class Board extends Application {
 		c7.setStrokeWidth(3);
 
 		// On hover event
-		c1.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c1.setFill(Color.RED);
-						c1.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c1.setFill(Color.BLACK);
-						c1.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c1);
 
-		c2.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c2.setFill(Color.RED);
-						c2.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c2.setFill(Color.BLACK);
-						c2.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c2);
 
-		c3.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c3.setFill(Color.RED);
-						c3.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c3.setFill(Color.BLACK);
-						c3.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c3);
 
-		c4.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c4.setFill(Color.RED);
-						c4.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c4.setFill(Color.BLACK);
-						c4.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c4);
 
-		c5.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c5.setFill(Color.RED);
-						c5.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c5.setFill(Color.BLACK);
-						c5.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c5);
 
-		c6.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c6.setFill(Color.RED);
-						c6.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c6.setFill(Color.BLACK);
-						c6.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c6);
 
-		c7.addEventHandler(MouseEvent.MOUSE_ENTERED, 
-				e -> { 
-					if (pTurn == 1) {
-						c7.setFill(Color.RED);
-						c7.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c7.setFill(Color.BLACK);
-						c7.setStroke(Color.BLACK);
-					}
-				});
+		setOnHoverColor(c7);
 
 		// When no longer hovering
 		c1.addEventHandler(MouseEvent.MOUSE_EXITED, 
@@ -252,7 +182,7 @@ public class Board extends Application {
 
 		// Event handler for placing circle. It checks the array for the value that is
 		// empty(in descending order).It works off of on action clicked, for that
-		// specific column
+		// specific
 		EventHandler<MouseEvent> cirClick1 = new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
@@ -261,20 +191,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 0, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cOne[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cOne[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cOne, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -291,20 +208,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 1, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cTwo[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cTwo[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cTwo, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -321,20 +225,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 2, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cThree[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cThree[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cThree, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -351,20 +242,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 3, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cFour[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cFour[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cFour, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -381,20 +259,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 4, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cFive[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cFive[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cFive, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -411,20 +276,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 5, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cSix[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cSix[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cSix, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -441,20 +293,7 @@ public class Board extends Application {
 						Circle cir = new Circle(0, 0, 50);
 						cir.setStrokeWidth(3);
 						grid.add(cir, 6, i + 1);
-						if (pTurn == 1) {
-							cir.setFill(Color.RED);
-							cir.setStroke(Color.RED);
-							pTurn = 2;
-							cSeven[i] = 1;
-							turn.setText(name2 + "'s Turn");
-						}
-						else if (pTurn == 2) {
-							cir.setFill(Color.BLACK);
-							cir.setStroke(Color.BLACK);
-							pTurn = 1;
-							cSeven[i] = 2;
-							turn.setText(name1 + "'s Turn");
-						}
+						changePlayerTurn(i, cir, cSeven, turn, name2, name1);
 						i = -1;
 					}
 				}
@@ -485,6 +324,37 @@ public class Board extends Application {
 		primaryStage.setResizable(false);
 		primaryStage.show();
 
+	}
+
+	private void setOnHoverColor(Circle c3) {
+		c3.addEventHandler(MouseEvent.MOUSE_ENTERED,
+				e -> {
+					if (pTurn == 1) {
+						c3.setFill(Color.RED);
+						c3.setStroke(Color.RED);
+					}
+					else if (pTurn == 2) {
+						c3.setFill(Color.BLACK);
+						c3.setStroke(Color.BLACK);
+					}
+				});
+	}
+
+	private void changePlayerTurn(int i, Circle cir, int[] cSeven, Text turn, String name2, String name1) {
+		if (pTurn == 1) {
+			cir.setFill(Color.RED);
+			cir.setStroke(Color.RED);
+			pTurn = 2;
+			cSeven[i] = 1;
+			turn.setText(name2 + "'s Turn");
+		}
+		else if (pTurn == 2) {
+			cir.setFill(Color.BLACK);
+			cir.setStroke(Color.BLACK);
+			pTurn = 1;
+			cSeven[i] = 2;
+			turn.setText(name1 + "'s Turn");
+		}
 	}
 
 }

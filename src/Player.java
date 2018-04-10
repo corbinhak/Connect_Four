@@ -1,8 +1,9 @@
+import java.util.Scanner;
 public class Player extends Board{
-	
+
 	private String name;
 	private int id;
-	
+
 	//////////////////////
 	//Player constructor//
 	//////////////////////
@@ -10,10 +11,10 @@ public class Player extends Board{
 		this.name = name;
 		this.id = playerNum;
 	}
-	
-	///////////////////
-	//Get player name//
-	///////////////////
+
+	//////////////////////////
+	//Get player name and ID//
+	//////////////////////////
 	public String getName(){
 		return this.name;
 	}
@@ -25,118 +26,232 @@ public class Player extends Board{
 	public String toString(){
 		return String.format("Player %d: %s's Turn");
 	}
-	
+
 	public void turn() {
-		
+
 	}
-	
+
 	///////////////////////////////////////////
 	//Method to determine if a player has won//
 	///////////////////////////////////////////
 	public boolean hasWon(Player p) {
 		boolean truth = false;
-		
+
 		//Checks vertical
-		if(checkVert(cOne) == true) {
+		if(checkVert(cOne, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cTwo) == true) {
+		if(checkVert(cTwo, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cThree) == true) {
+		if(checkVert(cThree, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cFour) == true) {
+		if(checkVert(cFour, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cFive) == true) {
+		if(checkVert(cFive, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cSix) == true) {
+		if(checkVert(cSix, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cSeven) == true) {
+		if(checkVert(cSeven, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		
+
 		//Checks horizontal
-		if(checkHori(0) == true) {
+		if(checkHori(0, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(1) == true) {
+		if(checkHori(1, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(2) == true) {
+		if(checkHori(2, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(3) == true) {
+		if(checkHori(3, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(4) == true) {
+		if(checkHori(4, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(5) == true) {
+		if(checkHori(5, p.id) == true) {
 			truth = true;
 			return truth;
 		}
-		
+
 		return truth;
 	}
-	
+
 	//////////////////////////////////////////////////////////
 	//Method to check if there are four in a row in a column//
 	//////////////////////////////////////////////////////////
-	public boolean checkVert(int[] a) {//TODO Add player number to check for (ie. 1 or 2)
+	public boolean checkVert(int[] a, int id) {//TODO Add player number to check for (ie. 1 or 2)
 		boolean truth = false;
-		if(a[0] == a[1] && a[0] == a[2] && a[0] == a[3]) {
+		if(a[0] == id && a[0] == a[1] && a[0] == a[2] && a[0] == a[3]) {
 			truth = true;
 			return truth;
 		}
-		if(a[1] == a[2] && a[1] == a[3] && a[1] == a[4]) {
+		if(a[1] == id && a[1] == a[2] && a[1] == a[3] && a[1] == a[4]) {
 			truth = true;
 			return truth;
 		}
-		if(a[2] == a[3] && a[2] == a[4] && a[2] == a[5]) {
+		if(a[2] == id && a[2] == a[3] && a[2] == a[4] && a[2] == a[5]) {
 			truth = true;
 			return truth;
 		}
 		return truth;
 	}
-	
+
 	//////////////////////////////////////////////////////////
 	//Method to check if there are four in a row in a column//
 	//////////////////////////////////////////////////////////
-	public boolean checkHori(int i) {//TODO Add player number to check for (ie. 1 or 2)
+	public boolean checkHori(int i, int id) {//TODO Add player number to check for (ie. 1 or 2)
 		boolean truth = false;
-		if(cOne[i] == cTwo[i] && cOne[i] == cThree[i] && cOne[i] == cFour[i]) {
+		if(cOne[i] == id && cOne[i] == cTwo[i] && cOne[i] == cThree[i] && cOne[i] == cFour[i]) {
+			truth = true;
+			System.out.printf("Test");
+			return truth;
+		}
+		if(cTwo[i] == id && cTwo[i] == cThree[i] && cTwo[i] == cFour[i] && cOne[i] == cFive[i]) {
 			truth = true;
 			return truth;
 		}
-		if(cTwo[i] == cThree[i] && cTwo[i] == cFour[i] && cOne[i] == cFive[i]) {
+		if(cThree[i] == id && cThree[i] == cFour[i] && cThree[i] == cFive[i] && cThree[i] == cSix[i]) {
 			truth = true;
 			return truth;
 		}
-		if(cThree[i] == cFour[i] && cThree[i] == cFive[i] && cThree[i] == cSix[i]) {
-			truth = true;
-			return truth;
-		}
-		if(cFour[i] == cFive[i] && cFour[i] == cSix[i] && cFour[i] == cSeven[i]) {
+		if(cFour[i] == id && cFour[i] == cFive[i] && cFour[i] == cSix[i] && cFour[i] == cSeven[i]) {
 			truth = true;
 			return truth;
 		}
 		return truth;
 
+	}
+
+	public boolean checkDiag(int id){
+		boolean truth = false;
+		//////////////////////////////////////////////////////////
+		///Diagonal starting in column one (going to the right)//
+		//////////////////////////////////////////////////////////
+		if(cOne[0] == id && cOne[0] == cTwo[1] && cOne[0] == cThree[2] && cOne[0] == cFour[3] ) {
+			truth = true;
+			return truth;
+		}
+		if(cOne[1] == id && cOne[1] == cTwo[2] && cOne[1] == cThree[3] && cOne[1] == cFour[4] ) {
+			truth = true;
+			return truth;
+		}
+		if(cOne[2] == id && cOne[2] == cTwo[3] && cOne[2] == cThree[4] && cOne[2] == cFour[5] ) {
+			truth = true;
+			return truth;
+		}
+		if(cOne[3] == id && cOne[3] == cTwo[2] && cOne[3] == cThree[1] && cOne[3] == cFour[4] ) {
+			truth = true;
+			return truth;
+		}
+		if(cOne[4] == id && cOne[4] == cTwo[3] && cOne[4] == cThree[2] && cOne[4] == cFour[1] ) {
+			truth = true;
+			return truth;
+		}
+		if(cOne[5] == id && cOne[5] == cTwo[4] && cOne[5] == cThree[3] && cOne[5] == cFour[2] ) {
+			truth = true;
+			return truth;
+		}
+		//////////////////////////////////////////////////////////
+		///Diagonal starting in column two (going to the right)///
+		//////////////////////////////////////////////////////////
+		if(cTwo[0] == id && cTwo[0] == cThree[1] && cTwo[0] == cFour[2] && cTwo[0] == cFive[3] ) {
+			truth = true;
+			return truth;
+		}
+		if(cTwo[1] == id && cTwo[1] == cThree[2] && cTwo[1] == cFour[3] && cTwo[1] == cFive[4] ) {
+			truth = true;
+			return truth;
+		}
+		if(cTwo[2] == id && cTwo[2] == cThree[3] && cTwo[2] == cFour[4] && cTwo[2] == cFive[5] ) {
+			truth = true;
+			return truth;
+		}
+		if(cTwo[3] == id && cTwo[3] == cThree[2] && cTwo[3] == cFour[1] && cTwo[3] == cFive[0] ) {
+			truth = true;
+			return truth;
+		}
+		if(cTwo[4] == id && cTwo[4] == cThree[3] && cTwo[4] == cFour[2] && cTwo[4] == cFive[1] ) {
+			truth = true;
+			return truth;
+		}
+		if(cTwo[5] == id && cTwo[5] == cThree[4] && cTwo[5] == cFour[3] && cTwo[5] == cFive[2] ) {
+			truth = true;
+			return truth;
+		}
+		////////////////////////////////////////////////////////////
+		///Diagonal starting in column three (going to the right)///
+		////////////////////////////////////////////////////////////
+		if(cThree[0] == id && cThree[0] == cFour[1] && cThree[0] == cFive[2] && cThree[0] == cSix[3] ) {
+			truth = true;
+			return truth;
+		}
+		if(cThree[1] == id && cThree[1] == cFour[2] && cThree[1] == cFive[3] && cThree[1] == cSix[4] ) {
+			truth = true;
+			return truth;
+		}
+		if(cThree[2] == id && cThree[2] == cFour[3] && cThree[2] == cFive[4] && cThree[2] == cSix[5] ) {
+			truth = true;
+			return truth;
+		}
+		if(cThree[3] == id && cThree[3] == cFour[2] && cThree[3] == cFive[1] && cThree[3] == cSix[0] ) {
+			truth = true;
+			return truth;
+		}
+		if(cThree[4] == id && cThree[4] == cFour[3] && cThree[4] == cFive[2] && cThree[4] == cSix[1] ) {
+			truth = true;
+			return truth;
+		}
+		if(cThree[5] == id && cThree[5] == cFour[4] && cThree[5] == cFive[3] && cThree[5] == cSix[2] ) {
+			truth = true;
+			return truth;
+		}
+		///////////////////////////////////////////////////////////
+		///Diagonal starting in column four (going to the right)///
+		///////////////////////////////////////////////////////////
+		if(cFour[0] == id && cFour[0] == cFive[1] && cFour[0] == cSix[2] && cFour[0] == cSeven[3] ) {
+			truth = true;
+			return truth;
+		}
+		if(cFour[1] == id && cFour[1] == cFive[2] && cFour[1] == cSix[3] && cFour[1] == cSeven[4] ) {
+			truth = true;
+			return truth;
+		}
+		if(cFour[2] == id && cFour[2] == cFive[3] && cFour[2] == cSix[4] && cFour[2] == cSeven[5] ) {
+			truth = true;
+			return truth;
+		}
+		if(cFour[3] == id && cFour[3] == cFive[2] && cFour[3] == cSix[1] && cFour[3] == cSeven[0] ) {
+			truth = true;
+			return truth;
+		}
+		if(cFour[4] == id && cFour[4] == cFive[3] && cFour[4] == cSix[2] && cFour[4] == cSeven[1] ) {
+			truth = true;
+			return truth;
+		}
+		if(cFour[5] == id && cFour[5] == cFive[4] && cFour[5] == cSix[3] && cFour[5] == cSeven[2] ) {
+			truth = true;
+			return truth;
+		}
+		return truth;
 	}
 }
