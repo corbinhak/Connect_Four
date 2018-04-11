@@ -12,14 +12,14 @@ import javafx.scene.input.MouseEvent;
 
 public class Board extends Application {
 	// Integer arrays for referencing columns (1-7)
-	protected int[] cOne = new int[6];
-	protected int[] cTwo = new int[6];
-	protected int[] cThree = new int[6];
-	protected int[] cFour = new int[6];
-	protected int[] cFive = new int[6];
-	protected int[] cSix = new int[6];
-	protected int[] cSeven = new int[6];
-	
+	protected static int[] cOne = new int[6];
+	protected static int[] cTwo = new int[6];
+	protected static int[] cThree = new int[6];
+	protected static int[] cFour = new int[6];
+	protected static int[] cFive = new int[6];
+	protected static int[] cSix = new int[6];
+	protected static int[] cSeven = new int[6];
+
 	protected int pTurn = 1;
 
 	// Getter methods for each column array
@@ -76,7 +76,7 @@ public class Board extends Application {
 				grid.add(circle, j, i + 1);
 			}
 		}
-		
+
 		// Get information for turn text
 		String name1 = ConnectFour.getName1();
 		String name2 = ConnectFour.getName2();
@@ -138,63 +138,35 @@ public class Board extends Application {
 		setOnHoverColor(c7);
 
 		// When no longer hovering
-		c1.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c1.setFill(Color.TRANSPARENT);
-					c1.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c1);
 
-		c2.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c2.setFill(Color.TRANSPARENT);
-					c2.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c2);
 
-		c3.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c3.setFill(Color.TRANSPARENT);
-					c3.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c3);
 
-		c4.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c4.setFill(Color.TRANSPARENT);
-					c4.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c4);
 
-		c5.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c5.setFill(Color.TRANSPARENT);
-					c5.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c5);
 
-		c6.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c6.setFill(Color.TRANSPARENT);
-					c6.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c6);
 
-		c7.addEventHandler(MouseEvent.MOUSE_EXITED, 
-				e -> { 
-					c7.setFill(Color.TRANSPARENT);
-					c7.setStroke(Color.TRANSPARENT);
-				});
+		setNoHoverColor(c7);
 
 		// Event handler for placing circle. It checks the array for the value that is
-		// empty(in descending order).It works off of on action clicked, for that
-		// specific
+		// empty(in descending order). It works off of on action clicked, for that
+		// specific column
 		EventHandler<MouseEvent> cirClick1 = new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
 				for (int i = 5; i >= 0; i--) {
 					if (cOne[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 0, i + 1);
 						changePlayerTurn(i, cir, cOne, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -206,12 +178,12 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cTwo[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 1, i + 1);
 						changePlayerTurn(i, cir, cTwo, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -223,12 +195,12 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cThree[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 2, i + 1);
 						changePlayerTurn(i, cir, cThree, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -240,12 +212,12 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cFour[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 3, i + 1);
 						changePlayerTurn(i, cir, cFour, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -257,12 +229,12 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cFive[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 4, i + 1);
 						changePlayerTurn(i, cir, cFive, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -274,12 +246,12 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cSix[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 5, i + 1);
 						changePlayerTurn(i, cir, cSix, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -291,12 +263,12 @@ public class Board extends Application {
 				for (int i = 5; i >= 0; i--) {
 					if (cSeven[i] == 0) {
 						Circle cir = new Circle(0, 0, 50);
-						cir.setStrokeWidth(3);
 						grid.add(cir, 6, i + 1);
 						changePlayerTurn(i, cir, cSeven, turn, name2, name1);
 						i = -1;
 					}
 				}
+				checkWin();
 			}
 		};
 
@@ -326,35 +298,44 @@ public class Board extends Application {
 
 	}
 
-	private void setOnHoverColor(Circle c3) {
-		c3.addEventHandler(MouseEvent.MOUSE_ENTERED,
-				e -> {
-					if (pTurn == 1) {
-						c3.setFill(Color.RED);
-						c3.setStroke(Color.RED);
-					}
-					else if (pTurn == 2) {
-						c3.setFill(Color.BLACK);
-						c3.setStroke(Color.BLACK);
-					}
-				});
+	private void setOnHoverColor(Circle circle) {
+		circle.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> {
+			if (pTurn == 1) {
+				circle.setFill(Color.RED);
+				circle.setStroke(Color.RED);
+			} else if (pTurn == 2) {
+				circle.setFill(Color.BLACK);
+				circle.setStroke(Color.BLACK);
+			}
+		});
 	}
 
-	private void changePlayerTurn(int i, Circle cir, int[] cSeven, Text turn, String name2, String name1) {
+	private void setNoHoverColor(Circle circle) {
+		circle.addEventHandler(MouseEvent.MOUSE_EXITED, e -> {
+			circle.setFill(Color.TRANSPARENT);
+			circle.setStroke(Color.TRANSPARENT);
+		});
+	}
+
+	private void changePlayerTurn(int i, Circle cir, int[] cGen, Text turn, String name2, String name1) {
+		Piece.piece(cir, pTurn);
 		if (pTurn == 1) {
-			cir.setFill(Color.RED);
-			cir.setStroke(Color.RED);
+			cGen[i] = 1;
 			pTurn = 2;
-			cSeven[i] = 1;
 			turn.setText(name2 + "'s Turn");
-		}
-		else if (pTurn == 2) {
-			cir.setFill(Color.BLACK);
-			cir.setStroke(Color.BLACK);
+		} else if (pTurn == 2) {
+			cGen[i] = 2;
 			pTurn = 1;
-			cSeven[i] = 2;
 			turn.setText(name1 + "'s Turn");
 		}
 	}
-
+	private void checkWin() {
+		if(Player.hasWon(1)) {
+			System.out.printf("P1 WON");
+		}
+		else if(Player.hasWon(2)) {
+			System.out.printf("P2 WON");
+		}
+	}
 }
+

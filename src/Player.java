@@ -34,61 +34,66 @@ public class Player extends Board{
 	///////////////////////////////////////////
 	//Method to determine if a player has won//
 	///////////////////////////////////////////
-	public boolean hasWon(Player p) {
+	public static boolean hasWon(int i) {
 		boolean truth = false;
 
 		//Checks vertical
-		if(checkVert(cOne, p.id) == true) {
+		if(checkVert(cOne, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cTwo, p.id) == true) {
+		if(checkVert(cTwo, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cThree, p.id) == true) {
+		if(checkVert(cThree, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cFour, p.id) == true) {
+		if(checkVert(cFour, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cFive, p.id) == true) {
+		if(checkVert(cFive, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cSix, p.id) == true) {
+		if(checkVert(cSix, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cSeven, p.id) == true) {
+		if(checkVert(cSeven, i) == true) {
 			truth = true;
 			return truth;
 		}
 
 		//Checks horizontal
-		if(checkHori(0, p.id) == true) {
+		if(checkHori(0, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(1, p.id) == true) {
+		if(checkHori(1, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(2, p.id) == true) {
+		if(checkHori(2, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(3, p.id) == true) {
+		if(checkHori(3, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(4, p.id) == true) {
+		if(checkHori(4, i) == true) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(5, p.id) == true) {
+		if(checkHori(5, i) == true) {
+			truth = true;
+			return truth;
+		}
+		//Checks diagonal
+		if(checkDiag(i) == true) {
 			truth = true;
 			return truth;
 		}
@@ -99,7 +104,7 @@ public class Player extends Board{
 	//////////////////////////////////////////////////////////
 	//Method to check if there are four in a row in a column//
 	//////////////////////////////////////////////////////////
-	public boolean checkVert(int[] a, int id) {//TODO Add player number to check for (ie. 1 or 2)
+	public static boolean checkVert(int[] a, int id) {
 		boolean truth = false;
 		if(a[0] == id && a[0] == a[1] && a[0] == a[2] && a[0] == a[3]) {
 			truth = true;
@@ -119,11 +124,10 @@ public class Player extends Board{
 	//////////////////////////////////////////////////////////
 	//Method to check if there are four in a row in a column//
 	//////////////////////////////////////////////////////////
-	public boolean checkHori(int i, int id) {//TODO Add player number to check for (ie. 1 or 2)
+	public static boolean checkHori(int i, int id) {
 		boolean truth = false;
 		if(cOne[i] == id && cOne[i] == cTwo[i] && cOne[i] == cThree[i] && cOne[i] == cFour[i]) {
 			truth = true;
-			System.out.printf("Test");
 			return truth;
 		}
 		if(cTwo[i] == id && cTwo[i] == cThree[i] && cTwo[i] == cFour[i] && cOne[i] == cFive[i]) {
@@ -142,7 +146,7 @@ public class Player extends Board{
 
 	}
 
-	public boolean checkDiag(int id){
+	public static boolean checkDiag(int id){
 		boolean truth = false;
 		//////////////////////////////////////////////////////////
 		///Diagonal starting in column one (going to the right)//
@@ -254,4 +258,6 @@ public class Player extends Board{
 		}
 		return truth;
 	}
+
 }
+
