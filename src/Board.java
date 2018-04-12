@@ -22,35 +22,6 @@ public class Board extends Application {
 
 	protected int pTurn = 1;
 
-	// Getter methods for each column array
-	public int[] getCOne() {
-		return cOne;// Column One
-	}
-
-	public int[] getCTwo() {
-		return cTwo;// Column Two
-	}
-
-	public int[] getCThree() {
-		return cThree;// Column Three
-	}
-
-	public int[] getCFour() {
-		return cFour;// Column Four
-	}
-
-	public int[] getCFive() {
-		return cFive;// Column Five
-	}
-
-	public int[] getCSix() {
-		return cSix;// Column Six
-	}
-
-	public int[] getCSeven() {
-		return cSeven;// Column Seven
-	}
-
 	public static void main(String[] args) {
 
 		launch(args);
@@ -58,7 +29,7 @@ public class Board extends Application {
 	}
 
 	// Primary Stage
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage){
 		// Create Grid
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(2));
@@ -166,7 +137,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -183,7 +154,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -200,7 +171,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -217,7 +188,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -234,7 +205,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -251,7 +222,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -268,7 +239,7 @@ public class Board extends Application {
 						i = -1;
 					}
 				}
-				checkWin();
+				checkWin(turn, name1, name2);
 			}
 		};
 
@@ -329,12 +300,12 @@ public class Board extends Application {
 			turn.setText(name1 + "'s Turn");
 		}
 	}
-	private void checkWin() {
-		if(Player.hasWon(1)) {
-			System.out.printf("P1 WON");
-		}
-		else if(Player.hasWon(2)) {
-			System.out.printf("P2 WON");
+
+	private void checkWin(Text turn, String name1, String name2) {
+		if (Player.hasWon(1)) {
+			turn.setText(name1 + " Has Won!");
+		} else if (Player.hasWon(2)) {
+			turn.setText(name2 + " Has Won!");
 		}
 	}
 }

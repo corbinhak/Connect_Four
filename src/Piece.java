@@ -1,17 +1,10 @@
 import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
 
-public class Piece {
-    // Variables
-    String playerid;
-    int row;
-    int col;
-
-    // Create generic circle
-    Circle c;
+public interface Piece {
 
     // Creates the piece
-    public static void piece(Circle c, int playerid) {
+    static void piece(Circle c, int playerid) {
         // Set the fill of the circle
         if (playerid == 1) {
             c.setFill(Color.RED);
