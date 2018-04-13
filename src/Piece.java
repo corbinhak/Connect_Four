@@ -2,11 +2,7 @@ import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
 
 public class Piece {
-    // Variables
-    String playerid;
-    int row;
-    int col;
-
+	
     // Create generic circle
     Circle c;
 

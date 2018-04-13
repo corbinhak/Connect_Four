@@ -22,41 +22,6 @@ public class Board extends Application {
 
 	protected int pTurn = 1;
 
-	// Getter methods for each column array
-	public int[] getCOne() {
-		return cOne;// Column One
-	}
-
-	public int[] getCTwo() {
-		return cTwo;// Column Two
-	}
-
-	public int[] getCThree() {
-		return cThree;// Column Three
-	}
-
-	public int[] getCFour() {
-		return cFour;// Column Four
-	}
-
-	public int[] getCFive() {
-		return cFive;// Column Five
-	}
-
-	public int[] getCSix() {
-		return cSix;// Column Six
-	}
-
-	public int[] getCSeven() {
-		return cSeven;// Column Seven
-	}
-
-	public static void main(String[] args) {
-
-		launch(args);
-
-	}
-
 	// Primary Stage
 	public void start(Stage primaryStage) {
 		// Create Grid
@@ -167,6 +132,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -184,6 +150,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -201,6 +168,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -218,6 +186,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -235,6 +204,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -252,6 +222,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -269,6 +240,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin();
+				checkTie();
 			}
 		};
 
@@ -331,10 +303,15 @@ public class Board extends Application {
 	}
 	private void checkWin() {
 		if(Player.hasWon(1)) {
-			System.out.printf("P1 WON");
+			System.out.printf("P1 WON%n");
 		}
 		else if(Player.hasWon(2)) {
-			System.out.printf("P2 WON");
+			System.out.printf("P2 WON%n");
+		}
+	}
+	private void checkTie() {
+		if(Player.tie() == true) {
+			System.out.printf("ITS A TIE");
 		}
 	}
 }
