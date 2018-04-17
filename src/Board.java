@@ -138,6 +138,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -155,6 +156,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -172,6 +174,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -189,6 +192,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -206,6 +210,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -223,6 +228,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -240,6 +246,7 @@ public class Board extends Application {
 					}
 				}
 				checkWin(turn, name1, name2);
+				checkTie(turn);
 			}
 		};
 
@@ -306,6 +313,11 @@ public class Board extends Application {
 			turn.setText(name1 + " Has Won!");
 		} else if (Player.hasWon(2)) {
 			turn.setText(name2 + " Has Won!");
+		}
+	}
+	private void checkTie(Text turn) {
+		if(Player.tie() == true) {
+			turn.setText("ITS A TIE");
 		}
 	}
 }
