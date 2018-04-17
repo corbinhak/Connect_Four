@@ -30,6 +30,34 @@ public class Player extends Board{
 	public void turn() {
 
 	}
+	
+	public static boolean tie() {
+		boolean truth = true;
+		for(int i = 0; i <= 5; i++) {
+			if(cOne[i] == 0) {
+				truth = false;
+			}
+			if(cTwo[i] == 0) {
+				truth = false;
+			}
+			if(cThree[i] == 0) {
+				truth = false;
+			}
+			if(cFour[i] == 0) {
+				truth = false;
+			}
+			if(cFive[i] == 0) {
+				truth = false;
+			}
+			if(cSix[i] == 0) {
+				truth = false;
+			}
+			if(cSeven[i] == 0) {
+				truth = false;
+			}
+		}
+		return truth;
+	}
 
 	public static boolean tie() {
 		boolean truth = true;
