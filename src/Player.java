@@ -1,5 +1,4 @@
-import java.util.Scanner;
-public class Player extends Board{
+public class Player extends Board {
 
 	private String name;
 	private int id;
@@ -10,53 +9,6 @@ public class Player extends Board{
 	Player(String name, int playerNum){
 		this.name = name;
 		this.id = playerNum;
-	}
-
-	//////////////////////////
-	//Get player name and ID//
-	//////////////////////////
-	public String getName(){
-		return this.name;
-	}
-	public int getID(int playerNum){
-		return this.id;
-	}
-
-	@Override
-	public String toString(){
-		return String.format("Player %d: %s's Turn");
-	}
-
-	public void turn() {
-
-	}
-	
-	public static boolean tie() {
-		boolean truth = true;
-		for(int i = 0; i <= 5; i++) {
-			if(cOne[i] == 0) {
-				truth = false;
-			}
-			if(cTwo[i] == 0) {
-				truth = false;
-			}
-			if(cThree[i] == 0) {
-				truth = false;
-			}
-			if(cFour[i] == 0) {
-				truth = false;
-			}
-			if(cFive[i] == 0) {
-				truth = false;
-			}
-			if(cSix[i] == 0) {
-				truth = false;
-			}
-			if(cSeven[i] == 0) {
-				truth = false;
-			}
-		}
-		return truth;
 	}
 
 	public static boolean tie() {
@@ -316,3 +268,4 @@ public class Player extends Board{
 	}
 
 }
+

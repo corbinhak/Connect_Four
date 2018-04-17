@@ -2,13 +2,16 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Circle;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.GridPane;
-import javafx.geometry.*;
-import javafx.scene.text.*;
+import javafx.geometry.Insets;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 import javafx.scene.input.MouseEvent;
+import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Board extends Application {
 	// Integer arrays for referencing columns (1-7)
@@ -20,8 +23,16 @@ public class Board extends Application {
 	protected static int[] cSix = new int[6];
 	protected static int[] cSeven = new int[6];
 
+	//Create ArrayList of Colors
+	protected static ArrayList<String> colors = new ArrayList<String>(6);
+
+	protected static String p1Color = "";
+	protected static String p2Color = "";
+
+	//Create player turn
 	protected int pTurn = 1;
 
+	//Launches args
 	public static void main(String[] args) {
 
 		launch(args);
@@ -29,7 +40,7 @@ public class Board extends Application {
 	}
 
 	// Primary Stage
-	public void start(Stage primaryStage){
+	public void start(Stage primaryStage) {
 		// Create Grid
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(2));
@@ -52,12 +63,27 @@ public class Board extends Application {
 		String name1 = ConnectFour.getName1();
 		String name2 = ConnectFour.getName2();
 
+		//Fill color ArrayList
+		colors.add("#FF0000");
+		colors.add("#FF00FF");
+		colors.add("BLACK");
+		colors.add("#008000");
+		colors.add("#FFD700");
+		colors.add("#D2691E");
+
+		//Random number for getting color for p1 and p2
+		int randomNum = ThreadLocalRandom.current().nextInt(0, 5 + 1);
+		p1Color = colors.get(randomNum);
+		colors.remove(randomNum);
+		randomNum = ThreadLocalRandom.current().nextInt(0, 4 + 1);
+		p2Color = colors.get(randomNum);
+
 		// Create Text
 		Text turn = new Text(5, 864, name1 + "'s Turn");
 		turn.setFill(Color.rgb(0, 0, 50));
 		turn.setFont(new Font(50));
 
-		// Create Circles for dropping
+		// Create Circles for dropping and makes them transparent
 		Circle c1 = new Circle(0, 0, 50);
 		c1.setFill(Color.TRANSPARENT);
 		c1.setStroke(Color.TRANSPARENT);
@@ -123,131 +149,110 @@ public class Board extends Application {
 
 		setNoHoverColor(c7);
 
-		// Event handler for placing circle. It checks the array for the value that is
-		// empty(in descending order). It works off of on action clicked, for that
-		// specific column
-		EventHandler<MouseEvent> cirClick1 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cOne[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 0, i + 1);
-						changePlayerTurn(i, cir, cOne, turn, name2, name1);
-						i = -1;
-					}
+		// Event handler for placing circles. It checks the array for the value that is
+		// empty(in descending order).
+		EventHandler<MouseEvent> cirClick1 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cOne[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 0, i + 1);
+					changePlayerTurn(i, cir, cOne, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
 		};
 
 		c1.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick1);
 
-		EventHandler<MouseEvent> cirClick2 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cTwo[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 1, i + 1);
-						changePlayerTurn(i, cir, cTwo, turn, name2, name1);
-						i = -1;
-					}
+		EventHandler<MouseEvent> cirClick2 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cTwo[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 1, i + 1);
+					changePlayerTurn(i, cir, cTwo, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
+
 		};
 
 		c2.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick2);
 
-		EventHandler<MouseEvent> cirClick3 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cThree[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 2, i + 1);
-						changePlayerTurn(i, cir, cThree, turn, name2, name1);
-						i = -1;
-					}
+		EventHandler<MouseEvent> cirClick3 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cThree[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 2, i + 1);
+					changePlayerTurn(i, cir, cThree, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
 		};
 
 		c3.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick3);
 
-		EventHandler<MouseEvent> cirClick4 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cFour[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 3, i + 1);
-						changePlayerTurn(i, cir, cFour, turn, name2, name1);
-						i = -1;
-					}
+		EventHandler<MouseEvent> cirClick4 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cFour[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 3, i + 1);
+					changePlayerTurn(i, cir, cFour, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
 		};
 
 		c4.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick4);
 
-		EventHandler<MouseEvent> cirClick5 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cFive[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 4, i + 1);
-						changePlayerTurn(i, cir, cFive, turn, name2, name1);
-						i = -1;
-					}
+		EventHandler<MouseEvent> cirClick5 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cFive[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 4, i + 1);
+					changePlayerTurn(i, cir, cFive, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
 		};
 
 		c5.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick5);
 
-		EventHandler<MouseEvent> cirClick6 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cSix[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 5, i + 1);
-						changePlayerTurn(i, cir, cSix, turn, name2, name1);
-						i = -1;
-					}
+		EventHandler<MouseEvent> cirClick6 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cSix[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 5, i + 1);
+					changePlayerTurn(i, cir, cSix, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
 		};
 
 		c6.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick6);
 
-		EventHandler<MouseEvent> cirClick7 = new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent e) {
-				for (int i = 5; i >= 0; i--) {
-					if (cSeven[i] == 0) {
-						Circle cir = new Circle(0, 0, 50);
-						grid.add(cir, 6, i + 1);
-						changePlayerTurn(i, cir, cSeven, turn, name2, name1);
-						i = -1;
-					}
+		EventHandler<MouseEvent> cirClick7 = e -> {
+			for (int i = 5; i >= 0; i--) {
+				if (cSeven[i] == 0) {
+					Circle cir = new Circle(0, 0, 50);
+					grid.add(cir, 6, i + 1);
+					changePlayerTurn(i, cir, cSeven, turn, name2, name1);
+					i = -1;
 				}
-				checkWin(turn, name1, name2);
-				checkTie(turn);
 			}
+			checkWin(turn, name1, name2);
+			checkTie(turn);
 		};
 
 		c7.addEventFilter(MouseEvent.MOUSE_CLICKED, cirClick7);
@@ -276,18 +281,20 @@ public class Board extends Application {
 
 	}
 
+	//Will display the circle on it being hovered over
 	private void setOnHoverColor(Circle circle) {
 		circle.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> {
 			if (pTurn == 1) {
-				circle.setFill(Color.RED);
-				circle.setStroke(Color.RED);
+				circle.setFill(Color.web(p1Color));
+				circle.setStroke(Color.web(p1Color));
 			} else if (pTurn == 2) {
-				circle.setFill(Color.BLACK);
-				circle.setStroke(Color.BLACK);
+				circle.setFill(Color.web(p2Color));
+				circle.setStroke(Color.web(p2Color));
 			}
 		});
 	}
 
+	//Will remove the color of the circle upon not being hovered over
 	private void setNoHoverColor(Circle circle) {
 		circle.addEventHandler(MouseEvent.MOUSE_EXITED, e -> {
 			circle.setFill(Color.TRANSPARENT);
@@ -295,8 +302,9 @@ public class Board extends Application {
 		});
 	}
 
+	//Changes the player's turn, and sets color of piece being placed on board
 	private void changePlayerTurn(int i, Circle cir, int[] cGen, Text turn, String name2, String name1) {
-		Piece.piece(cir, pTurn);
+		Piece.piece(cir, pTurn, p1Color, p2Color);
 		if (pTurn == 1) {
 			cGen[i] = 1;
 			pTurn = 2;
@@ -308,6 +316,7 @@ public class Board extends Application {
 		}
 	}
 
+	//Checks to see if the player has won
 	private void checkWin(Text turn, String name1, String name2) {
 		if (Player.hasWon(1)) {
 			turn.setText(name1 + " Has Won!");
@@ -315,6 +324,7 @@ public class Board extends Application {
 			turn.setText(name2 + " Has Won!");
 		}
 	}
+	//Check to see if none of the players won.
 	private void checkTie(Text turn) {
 		if(Player.tie() == true) {
 			turn.setText("ITS A TIE");
