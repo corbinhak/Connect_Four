@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Board extends Application {
+public class Board extends Application implements Piece {
 	// Integer arrays for referencing columns (1-7)
 	protected static int[] cOne = new int[6];
 	protected static int[] cTwo = new int[6];
@@ -321,7 +321,7 @@ public class Board extends Application {
 	
 	//Check to see if none of the players won.
 	private void checkTie(Text turn) {
-		if(Player.tie() == true) {
+		if(Player.tie()) {
 			turn.setText("ITS A TIE");
 		}
 	}

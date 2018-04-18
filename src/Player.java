@@ -46,62 +46,62 @@ public class Player extends Board {
 		boolean truth = false;
 
 		//Checks vertical
-		if(checkVert(cOne, i) == true) {
+		if(checkVert(cOne, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cTwo, i) == true) {
+		if(checkVert(cTwo, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cThree, i) == true) {
+		if(checkVert(cThree, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cFour, i) == true) {
+		if(checkVert(cFour, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cFive, i) == true) {
+		if(checkVert(cFive, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cSix, i) == true) {
+		if(checkVert(cSix, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkVert(cSeven, i) == true) {
+		if(checkVert(cSeven, i)) {
 			truth = true;
 			return truth;
 		}
 
 		//Checks horizontal
-		if(checkHori(0, i) == true) {
+		if(checkHori(0, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(1, i) == true) {
+		if(checkHori(1, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(2, i) == true) {
+		if(checkHori(2, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(3, i) == true) {
+		if(checkHori(3, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(4, i) == true) {
+		if(checkHori(4, i)) {
 			truth = true;
 			return truth;
 		}
-		if(checkHori(5, i) == true) {
+		if(checkHori(5, i)) {
 			truth = true;
 			return truth;
 		}
 		//Checks diagonal
-		if(checkDiag(i) == true) {
+		if(checkDiag(i)) {
 			truth = true;
 			return truth;
 		}
