@@ -284,13 +284,7 @@ public class Board extends Application {
 	//Will display the circle on it being hovered over
 	private void setOnHoverColor(Circle circle) {
 		circle.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> {
-			if (pTurn == 1) {
-				circle.setFill(Color.web(p1Color));
-				circle.setStroke(Color.web(p1Color));
-			} else if (pTurn == 2) {
-				circle.setFill(Color.web(p2Color));
-				circle.setStroke(Color.web(p2Color));
-			}
+			Piece.piece(circle, pTurn, p1Color, p2Color);
 		});
 	}
 
@@ -324,6 +318,7 @@ public class Board extends Application {
 			turn.setText(name2 + " Has Won!");
 		}
 	}
+	
 	//Check to see if none of the players won.
 	private void checkTie(Text turn) {
 		if(Player.tie() == true) {
